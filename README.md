@@ -42,6 +42,47 @@ DELIMITER ;
 INSERT INTO VOTER VALUES(80,’NITIN’,23,’MALGI’,1);
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci and Square Table</title>
+    <script type="text/javascript">
+        function fibonacci() {
+            var n = prompt("Enter a number to display the first n Fibonacci numbers:");
+            n = parseInt(n);
+            var fib = [0, 1];
+            for (var i = 2; i < n; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            var fibNumbers = "The first " + n + " Fibonacci numbers are:\n";
+            for (var i = 0; i < n; i++) {
+                fibNumbers += fib[i] + "\n";
+            }
+            alert(fibNumbers);
+        }
+
+        function squaresTable() {
+            var n = prompt("Enter a number to display a table of numbers and their squares:");
+            n = parseInt(n);
+            var table = "Number | Square\n";
+            table += "-----------------\n";
+            for (var i = 1; i <= n; i++) {
+                table += i + "     | " + (i * i) + "\n";
+            }
+            alert(table);
+        }
+    </script>
+</head>
+<body>
+    <h1>Fibonacci and Squares Table</h1>
+    <button onclick="fibonacci()">Show Fibonacci Numbers</button><br><br>
+    <button onclick="squaresTable()">Show Squares Table</button>
+</body>
+</html>
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 1	SELECT STATE FROM places GROUP BY STATE HAVING COUNT(*) = ( SELECT MAX(COUNTS) FROM 
 ( SELECT COUNT(*) AS COUNTS FROM PLACES GROUP BY STATE ) AS COUNTER ); 
 --------------------------------
@@ -52,6 +93,49 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 4.	SELECT T.NAME, AGE, COUNTRY FROM  visits V, places  P, tourist  T WHERE V.P_ID = P.P_ID AND V.T_ID = T.T_ID GROUP BY T.NAME, AGE, COUNTRY HAVING COUNT(DISTINCT STATE) = (SELECT COUNT(DISTINCT STATE) FROM places);
 -------------------------------
 5.	SELECT P.P_NAME, KM, HISTORY FROM  V, places  P, tourist  T WHERE V.P_ID = P.P_ID AND V.T_ID = T.T_ID GROUP BY P.P_NAME, KM, HISTORY HAVING COUNT(DISTINCT COUNTRY) = (SELECT COUNT(DISTINCT COUNTRY) FROM tourist);
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Stack Ordering</title>
+    <!-- Reduced CSS -->
+    <style type="text/css">
+        .layer {
+            border: solid thick black;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            z-index: 0;
+        }
+        #layer1 { background-color: brown; top: 100px; left: 200px; }
+        #layer2 { background-color: gray; top: 120px; left: 220px; }
+        #layer3 { background-color: white; top: 140px; left: 240px; }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var topLayer = "layer3";
+        // Function to bring the chosen layer to the top
+        function mover(toTop) {
+            document.getElementById(topLayer).style.zIndex = "0";
+            document.getElementById(toTop).style.zIndex = "1";
+            topLayer = toTop;
+        }
+    </script>
+    <p id="layer1" class="layer" onmouseover="mover('layer1');">This is the last layer</p>
+    <p id="layer2" class="layer" onmouseover="mover('layer2');">This is the middle layer</p>
+    <p id="layer3" class="layer" onmouseover="mover('layer3');">This is the first layer</p>
+</body>
+</html>
+
+
+
+
 
 
 
